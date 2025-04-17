@@ -10,12 +10,12 @@ def home():
     @app.route("/clique", methods=["POST"])
     def clicar():
         contador["cliques"] += 1
+    return jsonify(contador)
+
+    @app.route("/contador", methods=["GET"])
+    def ver_contador():
         return jsonify(contador)
 
-	    @app.route("/contador", methods=["GET"])
-	    def ver_contador():
-	        return jsonify(contador)
-
-		if __name__ == "__main__":
-		    app.run(host="0.0.0.0", port=5000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
 

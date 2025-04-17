@@ -5,3 +5,4 @@
 # Deploy automático testado após ajuste
 # reenvio da imagem contador
 # reenvio da imagem contador
+# reenvio da imagem contador

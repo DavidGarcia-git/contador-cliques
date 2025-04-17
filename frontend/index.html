@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contador de Cliques</title>
+  </head>
+  <body>
+    <h1>Contador de Cliques</h1>
+      <p id="contador">Cliques: 0</p>
+        <button onclick="clicar()">Clique aqui</button>
+
+	  <script>
+	      async function clicar() {
+	            await fetch('/clique', { method: 'POST' });
+		          atualizar();
+			      }
+
+			          async function atualizar() {
+				        const res = await fetch('/contador');
+					      const data = await res.json();
+					            document.getElementById('contador').innerText = 'Cliques: ' + data.cliques;
+						        }
+
+							    atualizar();
+							      </script>
+							      </body>
+							      </html>
+

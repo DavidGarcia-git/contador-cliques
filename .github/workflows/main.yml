@@ -32,10 +32,10 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_KEY }}
-          source: "."
+          source: "./"
           target: "contador-cliques"
 
-      - name: Build e run do container
+      - name: Build e run do container com verificação
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -44,4 +44,21 @@ jobs:
           script: |
             cd contador-cliques
             docker build -t contador .
+            if [ $? -ne 0 ]; then
+              echo "❌ Erro no docker build"
+              exit 1
+            fi
+
             docker run -d -p 5000:5000 --name contador contador
+            if [ $? -ne 0 ]; then
+              echo "❌ Erro ao subir o container"
+              exit 1
+            fi
+
+            docker ps | grep contador
+            if [ $? -ne 0 ]; then
+              echo "❌ Container 'contador' não está rodando após o run"
+              exit 1
+            fi
+
+            echo "✅ Deploy concluído com sucesso!"

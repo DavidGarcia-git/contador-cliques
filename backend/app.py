@@ -10,7 +10,7 @@ def home():
     @app.route("/clique", methods=["POST"])
     def clicar():
         contador["cliques"] += 1
-	    return jsonify(contador)
+        return jsonify(contador)
 
 	    @app.route("/contador", methods=["GET"])
 	    def ver_contador():

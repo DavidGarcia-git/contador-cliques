@@ -9,8 +9,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Clona o código
-        uses: actions/checkout@v2
+        - name: Clona o código
+          uses: actions/checkout@v2
 
       - name: Conecta no EC2 e limpa o ambiente
         uses: appleboy/ssh-action@master

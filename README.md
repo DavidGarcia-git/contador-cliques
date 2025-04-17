@@ -3,3 +3,4 @@
 # Deploy automático testado após ajuste
 # Deploy automático testado após ajuste
 # Deploy automático testado após ajuste
+# reenvio da imagem contador

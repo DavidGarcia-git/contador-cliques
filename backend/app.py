@@ -51,7 +51,7 @@ html = """
     <p>Moedas coletadas: <span id="valor">0</span></p>
 
     <div id="mario-box">
-      <img src="https://i.imgur.com/vyKc4XQ.gif" alt="Mario pulando" width="150">
+      <img src="https://media.tenor.com/fM9e7V-YpX8AAAAi/mario-jump.gif" alt="Mario pulando">
     </div>
   </body>
 </html>

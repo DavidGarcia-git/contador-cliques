@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template_string
+from flask import Flask, jsonify, request, render_template_string
 
 app = Flask(__name__)
 contador = 0
@@ -9,14 +9,27 @@ def index():
     <!DOCTYPE html>
     <html>
       <head>
-        <title>Contador de Cliques</title>
+        <title>Contador em tempo real</title>
+        <script>
+          async function clicar() {
+            await fetch('/clique', { method: 'POST' });
+            atualizarContador();
+          }
+
+          async function atualizarContador() {
+            const resposta = await fetch('/contador');
+            const dados = await resposta.json();
+            document.getElementById('valor').innerText = dados.contador;
+          }
+
+          window.onload = atualizarContador;
+        </script>
       </head>
       <body>
-        <h2>API do contador está no ar!</h2>
-        <form action="/clique" method="post">
-          <button type="submit">Clique para contar</button>
-        </form>
-        <p><a href="/contador">Ver valor atual</a></p>
+        <h2>Contador de Cliques</h2>
+        <p>Clique no botão abaixo:</p>
+        <button onclick="clicar()">Clique aqui</button>
+        <p>Contador atual: <span id="valor">0</span></p>
       </body>
     </html>
     """
